@@ -7129,6 +7129,7 @@ verdadeiro
 você
 `,
 	"hy": `
+# next languages added from https://www.ranks.nl/stopwords
 այդ
 այլ
 այն
