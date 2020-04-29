@@ -1,3 +1,4 @@
+# from https://github.com/lytics/GoOse/blob/dev/stopwords.go
 的
 一
 不

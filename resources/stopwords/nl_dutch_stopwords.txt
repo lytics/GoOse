@@ -1,3 +1,4 @@
+# from https://github.com/lytics/GoOse/blob/dev/stopwords.go
 aan
 af
 al

@@ -1,3 +1,4 @@
+# from https://github.com/stopwords/vietnamese-stopwords/blob/master/vietnamese-stopwords.txt
 a lô
 a ha
 ai

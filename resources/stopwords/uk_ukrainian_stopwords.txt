@@ -1,3 +1,4 @@
+# from https://www.ranks.nl/stopwords/ukrainian
 з
 й
 що

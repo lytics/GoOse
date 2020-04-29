@@ -1,3 +1,4 @@
+# from https://github.com/grangier/python-goose/blob/develop/goose/resources/text/stopwords-it.txt
 ad
 al
 allo
