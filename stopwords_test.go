@@ -6,12 +6,28 @@ import (
 
 func TestStopwordList(t *testing.T) {
 	// making new stopwords from resources/stopwords directory
-	newSW := NewStopwords()
+	newSW, err := NewStopwords()
+	if err != nil {
+		t.Errorf("Error when getting new stopwords")
+	}
 	got := len(newSW.cachedStopWords)
 	if got < 10 {
 		t.Errorf("Number of stopword lists from file = %d; want > 10", got)
 	}
 	for _, s := range newSW.cachedStopWords {
+		got := s.Size()
+		if got < 1 {
+			t.Errorf("Size of language set = %d; want > 1", got)
+		}
+	}
+
+	// making new stopwords from variable
+	defaultSW := GetDefaultStopwords()
+	got = len(defaultSW.cachedStopWords)
+	if got < 10 {
+		t.Errorf("Number of stopword lists from file = %d; want > 10", got)
+	}
+	for _, s := range defaultSW.cachedStopWords {
 		got := s.Size()
 		if got < 1 {
 			t.Errorf("Size of language set = %d; want > 1", got)
