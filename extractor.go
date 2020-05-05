@@ -126,16 +126,9 @@ func (extr *ContentExtractor) GetMetaLanguage(document *goquery.Document) string
 	} else {
 		language = attr[0:idx]
 	}
-
-	_, ok := sw[language]
-
-	if language == "" || !ok {
+	if language == "" {
 		language = extr.config.stopWords.SimpleLanguageDetector(shtml.Text())
-		if language == "" {
-			language = defaultLanguage
-		}
 	}
-
 	extr.config.targetLanguage = language
 	return language
 }

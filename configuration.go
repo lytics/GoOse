@@ -44,7 +44,7 @@ func GetDefaultConfiguration(args ...string) Configuration {
 			extractPublishDate:      false,
 			additionalDataExtractor: false,
 			stopWordsPath:           "resources/stopwords",
-			stopWords:               NewStopwords(), //TODO with path
+			stopWords:               stopwordsFromFile,
 			parser:                  NewParser(),
 			timeout:                 time.Duration(5 * time.Second),
 		}
@@ -62,7 +62,7 @@ func GetDefaultConfiguration(args ...string) Configuration {
 		extractPublishDate:      false,
 		additionalDataExtractor: false,
 		stopWordsPath:           "resources/stopwords",
-		stopWords:               NewStopwords(), //TODO with path
+		stopWords:               stopwordsFromFile,
 		parser:                  NewParser(),
 		timeout:                 time.Duration(5 * time.Second),
 	}
