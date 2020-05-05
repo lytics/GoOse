@@ -30,10 +30,6 @@ type Configuration struct {
 
 // GetDefaultConfiguration returns safe default configuration options
 func GetDefaultConfiguration(args ...string) Configuration {
-	stopwords, err := NewStopwords()
-	if err != nil {
-		stopwords = GetDefaultStopwords()
-	}
 	if len(args) == 0 {
 		return Configuration{
 			localStoragePath:        "",   //not used in this version
@@ -48,7 +44,7 @@ func GetDefaultConfiguration(args ...string) Configuration {
 			extractPublishDate:      false,
 			additionalDataExtractor: false,
 			stopWordsPath:           "resources/stopwords",
-			stopWords:               stopwords,
+			stopWords:               stopwordsFromFile,
 			parser:                  NewParser(),
 			timeout:                 time.Duration(5 * time.Second),
 		}
@@ -66,7 +62,7 @@ func GetDefaultConfiguration(args ...string) Configuration {
 		extractPublishDate:      false,
 		additionalDataExtractor: false,
 		stopWordsPath:           "resources/stopwords",
-		stopWords:               stopwords,
+		stopWords:               stopwordsFromFile,
 		parser:                  NewParser(),
 		timeout:                 time.Duration(5 * time.Second),
 	}
