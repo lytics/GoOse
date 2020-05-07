@@ -1,25 +1,11 @@
 package goose
 
-import (
-	"gopkg.in/fatih/set.v0"
-)
-
 //some word statistics
 type wordStats struct {
 	//total number of stopwords or good words that we can calculate
 	stopWordCount int
 	//total number of words on a node
 	wordCount int
-	//holds an actual list of the stop words we found
-	stopWords *set.Set
-}
-
-func (w *wordStats) getStopWords() *set.Set {
-	return w.stopWords
-}
-
-func (w *wordStats) setStopWords(stopWords *set.Set) {
-	w.stopWords = stopWords
 }
 
 func (w *wordStats) getStopWordCount() int {

@@ -43,8 +43,7 @@ func GetDefaultConfiguration(args ...string) Configuration {
 			debug:                   false,
 			extractPublishDate:      false,
 			additionalDataExtractor: false,
-			stopWordsPath:           "resources/stopwords",
-			stopWords:               stopwordsFromFile,
+			stopWords:               NewStopwords(),
 			parser:                  NewParser(),
 			timeout:                 time.Duration(5 * time.Second),
 		}
@@ -61,8 +60,7 @@ func GetDefaultConfiguration(args ...string) Configuration {
 		debug:                   false,
 		extractPublishDate:      false,
 		additionalDataExtractor: false,
-		stopWordsPath:           "resources/stopwords",
-		stopWords:               stopwordsFromFile,
+		stopWords:               NewStopwords(),
 		parser:                  NewParser(),
 		timeout:                 time.Duration(5 * time.Second),
 	}
