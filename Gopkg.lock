@@ -18,22 +18,6 @@
   revision = "349dd0209470eabd9514242c688c403c0926d266"
 
 [[projects]]
-  digest = "1:00b478cb17bbc3a26de5352eee1218f732f15d336ce4b7a421a09a91ce72565f"
-  name = "github.com/fatih/set"
-  packages = ["."]
-  pruneopts = ""
-  revision = "2c768e3c5489976167bfc42b5c7c92ca783f4389"
-  version = "v0.2.1"
-
-[[projects]]
-  digest = "1:633b5b39909d9d794f5543baee4971890e1866f5c082cdf4694954c1ff489a18"
-  name = "github.com/spaolacci/murmur3"
-  packages = ["."]
-  pruneopts = ""
-  revision = "9f5d223c60793748f04a9d5b4b4eacddfc1f755d"
-  version = "v1.1"
-
-[[projects]]
   digest = "1:a861e4e6a4dc717ab34b2674e68e703d9b816e994d583140d10b2feb45fd0228"
   name = "github.com/willf/bitset"
   packages = ["."]
@@ -42,12 +26,11 @@
   version = "v1.1.10"
 
 [[projects]]
-  digest = "1:86973c2ad2f8c2eae7e8148f4c6af4e5e10134cd0c276bb852c748b1f448374d"
+  digest = "1:aa0ee54c5db54de408a966b9d4445df64a0cd55a918aee5f3e87fc8885eb42d8"
   name = "github.com/willf/bloom"
   packages = ["."]
   pruneopts = ""
-  revision = "54e3b963ee1652b06c4562cb9b6020ebc6e36e59"
-  version = "v2.0.3"
+  revision = "b27214d2ef0a240ebb489b37c1cac25a36f51078"
 
 [[projects]]
   branch = "master"
@@ -100,7 +83,6 @@
   analyzer-version = 1
   input-imports = [
     "github.com/PuerkitoBio/goquery",
-    "github.com/fatih/set",
     "github.com/willf/bloom",
     "golang.org/x/net/html",
     "golang.org/x/net/html/atom",

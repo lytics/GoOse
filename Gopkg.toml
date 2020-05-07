@@ -36,3 +36,7 @@
 [[constraint]]
   name = "gopkg.in/fatih/set.v0"
   version = "0.1.0"
+
+[[constraint]]
+  name = "github.com/willf/bloom"
+  revision =  "b27214d2ef0a240ebb489b37c1cac25a36f51078"

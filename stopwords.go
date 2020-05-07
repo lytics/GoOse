@@ -49,7 +49,7 @@ func (stop *StopWords) stopWordsCount(lang string, text string) wordStats {
 	count := 0
 	if stops != nil {
 		for _, item := range items {
-			if stops.TestString(item) {
+			if stops.Test([]byte(item)){
 				count++
 			}
 		}
