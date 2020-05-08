@@ -18,7 +18,7 @@ type StopWords struct {
 
 // NewStopwords returns an instance of a stop words detector
 // new stopword lists can be added to the "resources/stopwords" directory as .txt with the filename
-// prefixed as "ISOLangCode_language_stopwords.txt"
+// prefixed as "ISO_639-1_LangCode_language_stopwords.txt"
 // ie. en_english_stopwords.txt
 func NewStopwords() StopWords {
 	return StopWords{
@@ -49,7 +49,7 @@ func (stop *StopWords) stopWordsCount(lang string, text string) wordStats {
 	count := 0
 	if stops != nil {
 		for _, item := range items {
-			if stops.Test([]byte(item)){
+			if stops.Test([]byte(item)) {
 				count++
 			}
 		}
