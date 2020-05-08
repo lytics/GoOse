@@ -11,6 +11,8 @@ var (
 	punctuationRegex = regexp.MustCompile(`[^\p{Ll}\p{Lu}\p{Lt}\p{Lo}\p{Nd}\p{Pc}\s]`)
 )
 
+const DefaultLanguage = "en"
+
 // StopWords implements a simple language detector
 type StopWords struct {
 	cachedStopWords map[string]*bloom.BloomFilter
@@ -62,8 +64,10 @@ func (stop *StopWords) stopWordsCount(lang string, text string) wordStats {
 
 // SimpleLanguageDetector returns the language code for the text, based on its stop words; defaults to "en"
 func (stop StopWords) SimpleLanguageDetector(text string) string {
-	max := 0
-	currentLang := "en"
+	// max is set to 10 instead of 0; when the text is sparse, language detection maybe unstable;
+	// it may be better to fall back to the default language
+	max := 10
+	currentLang := DefaultLanguage
 
 	for k := range stop.cachedStopWords {
 		ws := stop.stopWordsCount(k, text)

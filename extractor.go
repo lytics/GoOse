@@ -9,12 +9,11 @@ import (
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/willf/bloom"
 	"golang.org/x/net/html"
 	"golang.org/x/net/html/atom"
 	"gopkg.in/fatih/set.v0"
 )
-
-const defaultLanguage = "en"
 
 var motleyReplacement = "&#65533;" // U+FFFD (decimal 65533) is the "replacement character".
 //var escapedFragmentReplacement = regexp.MustCompile("#!")
@@ -130,7 +129,7 @@ func (extr *ContentExtractor) GetMetaLanguage(document *goquery.Document) string
 
 	// the logic above could pull back garbage string for the language:
 	// as a precaution, check the language against the stopword filter keys to see if we have the corresponding stopword list
-	if _, ok := filters[language]; ok {
+	if _, ok := getBloomFilterForLanguage(language); ok {
 		extr.config.targetLanguage = language
 		return language
 	}
@@ -140,7 +139,7 @@ func (extr *ContentExtractor) GetMetaLanguage(document *goquery.Document) string
 
 	// if the language is still not set, set the language to the default language
 	if language == "" {
-		language = defaultLanguage
+		language = DefaultLanguage
 	}
 	extr.config.targetLanguage = language
 	return language
@@ -664,4 +663,9 @@ func (extr *ContentExtractor) PostCleanup(targetNode *goquery.Selection) *goquer
 		}
 	})
 	return node
+}
+
+func getBloomFilterForLanguage(lang string) (*bloom.BloomFilter, bool) {
+	filter, ok := filters[lang]
+	return filter, ok
 }
