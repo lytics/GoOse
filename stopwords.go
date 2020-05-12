@@ -64,9 +64,7 @@ func (stop *StopWords) stopWordsCount(lang string, text string) wordStats {
 
 // SimpleLanguageDetector returns the language code for the text, based on its stop words; defaults to "en"
 func (stop StopWords) SimpleLanguageDetector(text string) string {
-	// max is set to 10 instead of 0; when the text is sparse, language detection maybe unstable;
-	// it may be better to fall back to the default language
-	max := 10
+	max := 0
 	currentLang := DefaultLanguage
 
 	for k := range stop.cachedStopWords {
