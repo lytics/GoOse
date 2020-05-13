@@ -11,6 +11,8 @@ var (
 	punctuationRegex = regexp.MustCompile(`[^\p{Ll}\p{Lu}\p{Lt}\p{Lo}\p{Nd}\p{Pc}\s]`)
 )
 
+const DefaultLanguage = "en"
+
 // StopWords implements a simple language detector
 type StopWords struct {
 	cachedStopWords map[string]*bloom.BloomFilter
@@ -18,7 +20,7 @@ type StopWords struct {
 
 // NewStopwords returns an instance of a stop words detector
 // new stopword lists can be added to the "resources/stopwords" directory as .txt with the filename
-// prefixed as "ISOLangCode_language_stopwords.txt"
+// prefixed as "ISO_639-1_LangCode_language_stopwords.txt"
 // ie. en_english_stopwords.txt
 func NewStopwords() StopWords {
 	return StopWords{
@@ -49,7 +51,7 @@ func (stop *StopWords) stopWordsCount(lang string, text string) wordStats {
 	count := 0
 	if stops != nil {
 		for _, item := range items {
-			if stops.Test([]byte(item)){
+			if stops.Test([]byte(item)) {
 				count++
 			}
 		}
@@ -63,7 +65,7 @@ func (stop *StopWords) stopWordsCount(lang string, text string) wordStats {
 // SimpleLanguageDetector returns the language code for the text, based on its stop words; defaults to "en"
 func (stop StopWords) SimpleLanguageDetector(text string) string {
 	max := 0
-	currentLang := "en"
+	currentLang := DefaultLanguage
 
 	for k := range stop.cachedStopWords {
 		ws := stop.stopWordsCount(k, text)
